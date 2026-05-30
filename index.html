@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- NAMA TAB WEBSITE KAMU -->
+    <title>wiwacuprety</title>
+    
+    <style>
+        /* Desain Dasar */
+        body { margin: 0; padding: 0; background-color: #2a1b24; color: #f5d0d6; font-family: 'Georgia', serif; text-align: center; overflow-x: hidden; }
+        .hidden { display: none !important; }
+        
+        /* Layar Kado */
+        #gift-screen { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; }
+        .gift-box { font-size: 5rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        
+        /* Konten Utama */
+        #main-content { padding: 50px 20px; animation: fadeIn 2s ease-in; padding-bottom: 200px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; color: #ffb6c1; }
+        p { font-size: 1.1rem; font-style: italic; opacity: 0.8; }
+        
+        /* Kotak Pesan */
+        .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px; }
+        .card { background-color: rgba(255, 255, 255, 0.05); border: 1px solid #ffb6c1; padding: 20px; border-radius: 15px; width: 280px; }
+        .card h3 { color: #ffb6c1; margin-top: 0; }
+        
+        /* Grid Foto */
+        .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 500px; margin: 40px auto; }
+        .photo-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; filter: grayscale(40%); transition: filter 0.5s; }
+        .photo-grid img:hover { filter: grayscale(0%); }
+        
+        /* Pemutar Musik */
+        .music-player { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 350px; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border-radius: 12px; }
+    </style>
+</head>
+<body>
+
+    <!-- LAYAR PERTAMA: KADO -->
+    <div id="gift-screen" onclick="openGift()">
+        <div class="gift-box">🎁</div>
+        <p>Tap to open</p>
+    </div>
+
+    <!-- KONTEN SETELAH KADO DIBUKA -->
+    <div id="main-content" class="hidden">
+        
+        <!-- PEMUTAR MUSIK SPOTIFY -->
+        <!-- Ganti link src di bawah dengan lagu pilihanmu -->
+        <div class="music-player">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4kfjA6WfgKBt7I7YKuDCkU?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- BAGIAN TEKS UTAMA -->
+        <h1>buat kamu, dwinda defreti irnayah nya aku <3</h1>
+        <p>Every petal holds a whisper of how much you mean to me.</p>
+
+        <!-- BAGIAN ALASAN (WHY I LOVE YOU) -->
+        <h2 style="margin-top: 50px; color: #ffb6c1;">Why I Love You</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>ur smile, ur laugh, everything about u </h3></h3>
+                <p>It lights up every room and every corner of my heart.</p>
+            </div>
+            <div class="card">
+                <h3>Your Kindness</h3>
+                <p>The way you care makes the world a better place.</p>
+            </div>
+            <div class="card">
+                <h3>Simply You</h3>
+                <p>Every version of you is more than enough for me.</p>
+            </div>
+        </div>
+
+        <!-- BAGIAN FOTO -->
+        <h2 style="margin-top: 50px; color: #ffb6c1;">Your Beautiful Pictures</h2>
+        <div class="photo-grid">
+            <!-- Ganti link di dalam src="" dengan link fotomu sendiri -->
+            <img src="https://via.placeholder.com/300x300/4a2b38/ffb6c1?text=Foto+1" alt="Foto 1">
+            <img src="https://via.placeholder.com/300x300/4a2b38/ffb6c1?text=Foto+2" alt="Foto 2">
+            <img src="https://via.placeholder.com/300x300/4a2b38/ffb6c1?text=Foto+3" alt="Foto 3">
+            <img src="https://via.placeholder.com/300x300/4a2b38/ffb6c1?text=Foto+4" alt="Foto 4">
+        </div>
+
+        <!-- PENUTUP -->
+        <h1 style="margin-top: 50px;">You Are Loved</h1>
+        <p>Beyond Words. Always & Forever.</p>
+    </div>
+
+    <script>
+        // Fungsi untuk menghilangkan kado dan memunculkan isi web
+        function openGift() {
+            document.getElementById('gift-screen').classList.add('hidden');
+            document.getElementById('main-content').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

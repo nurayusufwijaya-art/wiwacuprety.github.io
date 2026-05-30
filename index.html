@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- NAMA TAB WEBSITE KAMU -->
     <title>wiwacuprety</title>
     
     <style>
@@ -11,10 +10,10 @@
         body { margin: 0; padding: 0; background-color: #2a1b24; color: #f5d0d6; font-family: 'Georgia', serif; text-align: center; overflow-x: hidden; }
         .hidden { display: none !important; }
         
-        /* Layar Kado */
-        #gift-screen { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; }
-        .gift-box { font-size: 5rem; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        /* Layar Kado dengan Animasi Berdetak */
+        #gift-screen { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; background: radial-gradient(circle, #3d2332 0%, #2a1b24 100%); }
+        .gift-box { font-size: 6rem; animation: heartbeat 1.5s infinite; text-shadow: 0 0 20px rgba(255,182,193,0.5); }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
         
         /* Konten Utama */
         #main-content { padding: 50px 20px; animation: fadeIn 2s ease-in; padding-bottom: 200px; }
@@ -23,17 +22,34 @@
         p { font-size: 1.1rem; font-style: italic; opacity: 0.8; }
         
         /* Kotak Pesan */
-        .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px; }
-        .card { background-color: rgba(255, 255, 255, 0.05); border: 1px solid #ffb6c1; padding: 20px; border-radius: 15px; width: 280px; }
+        .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px; position: relative; z-index: 10; }
+        .card { background-color: rgba(255, 255, 255, 0.05); border: 1px solid #ffb6c1; padding: 20px; border-radius: 15px; width: 280px; backdrop-filter: blur(5px); }
         .card h3 { color: #ffb6c1; margin-top: 0; }
         
         /* Grid Foto */
-        .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 500px; margin: 40px auto; }
-        .photo-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; filter: grayscale(40%); transition: filter 0.5s; }
+        .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 500px; margin: 40px auto; position: relative; z-index: 10; }
+        .photo-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; filter: grayscale(20%); transition: filter 0.5s; }
         .photo-grid img:hover { filter: grayscale(0%); }
         
         /* Pemutar Musik */
         .music-player { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 350px; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border-radius: 12px; }
+        
+        /* Animasi Bunga & Kupu-kupu (Floating Elements) */
+        .floating-item {
+            position: fixed;
+            top: -10%;
+            z-index: 1; /* Muncul di belakang konten utama dan foto */
+            pointer-events: none; /* Agar tidak mengganggu saat digeser (scroll) */
+            animation: fall linear forwards;
+        }
+        
+        /* Gerakan jatuh dari atas ke bawah */
+        @keyframes fall {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) translateX(30px) rotate(360deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -48,20 +64,19 @@
     <div id="main-content" class="hidden">
         
         <!-- PEMUTAR MUSIK SPOTIFY -->
-        <!-- Ganti link src di bawah dengan lagu pilihanmu -->
         <div class="music-player">
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4kfjA6WfgKBt7I7YKuDCkU?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
 
         <!-- BAGIAN TEKS UTAMA -->
-        <h1>buat kamu, dwinda defreti irnayah nya aku <3</h1>
-        <p>Every petal holds a whisper of how much you mean to me.</p>
+        <h1 style="position:relative; z-index:10;">For You, My Everything</h1>
+        <p style="position:relative; z-index:10;">Every petal holds a whisper of how much you mean to me.</p>
 
         <!-- BAGIAN ALASAN (WHY I LOVE YOU) -->
-        <h2 style="margin-top: 50px; color: #ffb6c1;">Why I Love You</h2>
+        <h2 style="margin-top: 50px; color: #ffb6c1; position:relative; z-index:10;">Why I Love You</h2>
         <div class="grid-container">
             <div class="card">
-                <h3>ur smile, ur laugh, everything about u </h3></h3>
+                <h3>Your Smile</h3>
                 <p>It lights up every room and every corner of my heart.</p>
             </div>
             <div class="card">
@@ -75,9 +90,9 @@
         </div>
 
         <!-- BAGIAN FOTO -->
-        <h2 style="margin-top: 50px; color: #ffb6c1;">Your Beautiful Pictures</h2>
+        <h2 style="margin-top: 50px; color: #ffb6c1; position:relative; z-index:10;">Your Beautiful Pictures</h2>
         <div class="photo-grid">
-            <!-- Ganti link di dalam src="" dengan link fotomu sendiri -->
+            <!-- Ganti link di dalam src="" dengan link fotomu -->
             <img src="https://via.placeholder.com/300x300/4a2b38/ffb6c1?text=Foto+1" alt="Foto 1">
             <img src="https://via.placeholder.com/300x300/4a2b38/ffb6c1?text=Foto+2" alt="Foto 2">
             <img src="https://via.placeholder.com/300x300/4a2b38/ffb6c1?text=Foto+3" alt="Foto 3">
@@ -85,15 +100,49 @@
         </div>
 
         <!-- PENUTUP -->
-        <h1 style="margin-top: 50px;">You Are Loved</h1>
-        <p>Beyond Words. Always & Forever.</p>
+        <h1 style="margin-top: 50px; position:relative; z-index:10;">You Are Loved</h1>
+        <p style="position:relative; z-index:10;">Beyond Words. Always & Forever.</p>
     </div>
 
     <script>
-        // Fungsi untuk menghilangkan kado dan memunculkan isi web
+        // Fungsi untuk membuat elemen melayang (bunga/kupu-kupu)
+        function createFloatingElements() {
+            const symbols = ['🌸', '🦋', '🌷', '✨', '💖', '🌸', '✨']; 
+            const container = document.body;
+            
+            // Munculkan elemen baru setiap 400 milidetik
+            setInterval(() => {
+                let item = document.createElement('div');
+                item.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                item.classList.add('floating-item');
+                
+                // Posisi acak dari kiri ke kanan (0 sampai 100% layar)
+                item.style.left = Math.random() * 100 + 'vw';
+                
+                // Ukuran acak (antara 10px sampai 25px)
+                item.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                
+                // Waktu jatuh acak (antara 6 sampai 12 detik)
+                item.style.animationDuration = (Math.random() * 6 + 6) + 's';
+                
+                container.appendChild(item);
+                
+                // Hapus elemen setelah selesai jatuh agar HP tidak lag karena kebanyakan elemen
+                setTimeout(() => {
+                    item.remove();
+                }, 12000);
+                
+            }, 400);
+        }
+
+        // Fungsi untuk membuka kado
         function openGift() {
+            // Sembunyikan layar kado dan tampilkan konten utama
             document.getElementById('gift-screen').classList.add('hidden');
             document.getElementById('main-content').classList.remove('hidden');
+            
+            // Mulai hujan bunga dan kupu-kupu!
+            createFloatingElements();
         }
     </script>
 </body>
